@@ -11,10 +11,9 @@ class Solution:
                 # logic here
                 len_res = len(res)
                 for ele in res.keys():
-                    for n_ele in item:
+                    for key, n_ele in enumerate(item):
                         if n_ele not in ele:
                             res[item] = item
-                            break
                 if len_res == len(res):
                     res[item] = [item]
         return res
