@@ -3,21 +3,17 @@ from typing import List
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        res = {}
-        for item in strs:
-            if len(res) == 0:
-                res[item] = [item]
-            else:
-                # logic here
-                len_res = len(res)
-                for ele in res.keys():
-                    for key, n_ele in enumerate(item):
-                        if n_ele not in ele:
-                            res[item] = item
-                if len_res == len(res):
-                    res[item] = [item]
-        return res
-
+        if (len(strs) <= 1):
+            return [strs]
+        else:
+            res = {}
+            for item in strs:
+                to_search = ''.join(sorted(item))
+                if to_search in res:
+                    res[to_search] = res[to_search] + [item]
+                else:
+                    res[to_search] = [item]
+            return list(res.values())
 
 solution = Solution()
 strs = ["act", "pots", "tops", "cat", "stop", "hat"]
